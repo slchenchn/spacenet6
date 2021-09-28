@@ -1,16 +1,16 @@
 '''
 Author: Shuailin Chen
-Created Date: 2021-09-25
-Last Modified: 2021-09-27
+Created Date: 2021-09-14
+Last Modified: 2021-09-25
 	content: 
 '''
 # model settings
 norm_cfg = dict(type='SyncBN', requires_grad=True)
 model = dict(
     type='EncoderDecoder',
-    pretrained='/home/csl/code/PolSAR_SelfSup/work_dirs/pbyol_r50_sn6_sar_pro_ep200/20210927_094326/epoch_200_mmseg.pth',
+    pretrained='open-mmlab://resnet50',
     backbone=dict(
-        type='ResNetV1c',
+        type='ResNet',
         depth=50,
         num_stages=4,
         out_indices=(0, 1, 2, 3),

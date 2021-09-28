@@ -8,7 +8,7 @@ Last Modified: 2021-09-25
 norm_cfg = dict(type='SyncBN', requires_grad=True)
 model = dict(
     type='EncoderDecoder',
-    pretrained='/home/csl/code/PolSAR_SelfSup/work_dirs/pbyol_r50_sn6_sar_pro_ep200/20210924_145747/epoch_200.pth',
+    pretrained='open-mmlab://resnet50_v1c',
     backbone=dict(
         type='ResNetV1c',
         depth=50,

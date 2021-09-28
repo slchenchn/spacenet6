@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-14
-Last Modified: 2021-09-18
+Last Modified: 2021-09-25
 	content: 
 '''
 # Copyright (c) OpenMMLab. All rights reserved.
@@ -20,7 +20,6 @@ from .pascal_context import PascalContextDataset, PascalContextDataset59
 from .stare import STAREDataset
 from .voc import PascalVOCDataset
 
-<<<<<<< HEAD
 from .sn6_extent_pauli import SN6PauliDataset
 from .sn6_sar_pro import SN6SARProDataset
 from .sn6_ps_rgb import SN6PSRGBDataset
@@ -32,13 +31,3 @@ from .sn6_ps_rgb import SN6PSRGBDataset
 #     'PascalContextDataset59', 'ChaseDB1Dataset', 'DRIVEDataset', 'HRFDataset',
 #     'STAREDataset', 'DarkZurichDataset', 'NightDrivingDataset'
 # ]
-=======
-__all__ = [
-    'CustomDataset', 'build_dataloader', 'ConcatDataset', 'RepeatDataset',
-    'DATASETS', 'build_dataset', 'PIPELINES', 'CityscapesDataset',
-    'PascalVOCDataset', 'ADE20KDataset', 'PascalContextDataset',
-    'PascalContextDataset59', 'ChaseDB1Dataset', 'DRIVEDataset', 'HRFDataset',
-    'STAREDataset', 'DarkZurichDataset', 'NightDrivingDataset',
-    'COCOStuffDataset'
-]
->>>>>>> 186a1fc88e31f294adbabb677608240aa2221d2a
