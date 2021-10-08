@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-14
-Last Modified: 2021-09-30
+Last Modified: 2021-10-08
 	content: 
 '''
 
@@ -48,19 +48,19 @@ data = dict(
         data_root=data_root,
         img_dir='SN6_full/PS-RGB',
         ann_dir='SN6_sup/label_mask',
-        split='SN6_full/train.txt',
+        split='SN6_sup/split/train.txt',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
         data_root=data_root,
         img_dir='SN6_full/PS-RGB',
         ann_dir='SN6_sup/label_mask',
-        split='SN6_full/test.txt',
+        split='SN6_sup/split/test.txt',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
         data_root=data_root,
         img_dir='SN6_full/PS-RGB',
         ann_dir='SN6_sup/label_mask',
-        split='SN6_full/test.txt',
+        split='SN6_sup/split/test.txt',
         pipeline=test_pipeline))

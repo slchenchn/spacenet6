@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-14
-Last Modified: 2021-09-16
+Last Modified: 2021-10-08
 	content: 
 '''
 # Copyright (c) OpenMMLab. All rights reserved.
@@ -15,6 +15,7 @@ from .transforms import (CLAHE, AdjustGamma, Normalize, Pad,
                          RandomRotate, Rerange, Resize, RGB2Gray, SegRescale)
 
 from .visualize import Visualize
+from .loading_misc import LoadSN6Orientation
 
 # __all__ = [
 #     'Compose', 'to_tensor', 'ToTensor', 'ImageToTensor', 'ToDataContainer',

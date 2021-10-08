@@ -2,7 +2,7 @@
 Author: Shuailin Chen
 Created Date: 2021-09-14
 Last Modified: 2021-10-08
-	content: 
+	content: with orientation infos
 '''
 
 # dataset settings
@@ -15,6 +15,8 @@ img_scale = (900, 900)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations', reduce_zero_label=True),
+    dict(type='LoadSN6Orientation',
+        file_path=r'data/SN6_full/SummaryData/SAR_orientations.txt'),
     # dict(type='Visualize'),
     # dict(type='Resize', img_scale=(2048, 512), ratio_range=(0.5, 2.0)),
     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
@@ -23,7 +25,10 @@ train_pipeline = [
     dict(type='Normalize', **img_norm_cfg),
     dict(type='Pad', size=crop_size, pad_val=0, seg_pad_val=255),
     dict(type='DefaultFormatBundle'),
-    dict(type='Collect', keys=['img', 'gt_semantic_seg']),
+    dict(type='Collect', keys=['img', 'gt_semantic_seg'],
+        meta_keys=('filename', 'ori_filename', 'ori_shape',
+                    'img_shape', 'pad_shape', 'scale_factor', 'flip', 'flip_direction', 'img_norm_cfg',
+                    'orientation')),
 ]
 test_pipeline = [
     dict(type='LoadImageFromFile'),
