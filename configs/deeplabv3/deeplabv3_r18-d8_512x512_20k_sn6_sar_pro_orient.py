@@ -34,9 +34,9 @@ model = dict(
         dict(
             type='ClassificationHead',
             num_linears=1,
-            in_channels=256,
-            in_index=2,
-            channels=256,
+            in_channels=128,
+            in_index=1,
+            channels=128,
             num_convs=0,
             dropout_ratio=0.1,
             num_classes=2,
