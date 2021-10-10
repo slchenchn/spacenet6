@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-14
-Last Modified: 2021-10-09
+Last Modified: 2021-10-10
 	content: fine tuning
 '''
 
@@ -12,7 +12,7 @@ _base_ = [
 ]
 
 model = dict(
-    pretrained='/home/csl/code/PolSAR_SelfSup/work_dirs/pbyol_r18_sn6_sar_pro_ul_fh_ep200_lr03/20211009_093548/mmseg_epoch_200.pth',
+    pretrained='/home/csl/code/PolSAR_SelfSup/work_dirs/pbyol_r18_sn6_sar_pro_ul_ep400_lr03/20211009_142911/mmseg_epoch_400.pth',
     
     backbone=dict(depth=18),
     decode_head=dict(
