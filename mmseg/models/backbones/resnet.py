@@ -1,3 +1,9 @@
+'''
+Author: Shuailin Chen
+Created Date: 2021-09-25
+Last Modified: 2021-10-12
+	content: 
+'''
 # Copyright (c) OpenMMLab. All rights reserved.
 import warnings
 
@@ -174,6 +180,7 @@ class Bottleneck(BaseModule):
             stride=self.conv1_stride,
             bias=False)
         self.add_module(self.norm1_name, norm1)
+        # QUERY: don't know its use
         fallback_on_stride = False
         if self.with_dcn:
             fallback_on_stride = dcn.pop('fallback_on_stride', False)
