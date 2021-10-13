@@ -19,5 +19,5 @@ class FlipAccodingToOrien():
     def __call__(self, results):
         if results['orientation']:
             results['img'] = mmcv.imflip(results['img'], direction='vertical')
-            results['gt_semantic_seg'] = mmcv.imflip(results['gt_semantic_seg'], direction='gt_semantic_seg')
+            results['gt_semantic_seg'] = mmcv.imflip(results['gt_semantic_seg'], direction='vertical')
         return results
