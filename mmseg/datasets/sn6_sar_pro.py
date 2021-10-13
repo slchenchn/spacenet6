@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-14
-Last Modified: 2021-09-16
+Last Modified: 2021-10-13
 	content: 
 '''
 
@@ -75,3 +75,21 @@ class SN6SARProDataset(CustomDataset):
 
         print_log(f'Loaded {len(img_infos)} images', logger=get_root_logger())
         return img_infos
+        
+
+    def prepare_test_img(self, idx):
+        """Get testing data after pipeline.
+
+        Args:
+            idx (int): Index of data.
+
+        Returns:
+            dict: Testing data after pipeline with new keys introduced by
+                pipeline.
+        """
+
+        img_info = self.img_infos[idx]
+        ann_info = self.get_ann_info(idx)
+        results = dict(img_info=img_info, ann_info=ann_info)
+        self.pre_pipeline(results)
+        return self.pipeline(results)
