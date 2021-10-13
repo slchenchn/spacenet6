@@ -15,9 +15,6 @@ img_scale = (900, 900)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations', reduce_zero_label=True),
-    dict(type='LoadSN6Orientation',
-        file_path=r'data/SN6_full/SummaryData/SAR_orientations.txt'),
-    dict(type='FlipAccodingToOrien'),
     # dict(type='Visualize'),
     # dict(type='Resize', img_scale=(2048, 512), ratio_range=(0.5, 2.0)),
     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
@@ -30,10 +27,6 @@ train_pipeline = [
 ]
 test_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations', reduce_zero_label=True),
-    dict(type='LoadSN6Orientation',
-        file_path=r'data/SN6_full/SummaryData/SAR_orientations.txt'),
-    dict(type='FlipAccodingToOrien'),
     dict(
         type='MultiScaleFlipAug',
         img_scale = (900, 900),
