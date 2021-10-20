@@ -7,7 +7,7 @@ Last Modified: 2021-10-20
 
 _base_ = [
     '../_base_/models/deeplabv3_r50-d8.py',
-    '../_base_/datasets/sn6_sar_pro.py',
+    '../_base_/datasets/sn6_sar_pro_rotated.py',
     '../_base_/default_runtime.py',
     '../_base_/schedules/schedule_20k.py'
 ]
