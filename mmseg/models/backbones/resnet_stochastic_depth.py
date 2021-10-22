@@ -79,7 +79,7 @@ class ResLayerDropPath(Sequential):
 				downsample=downsample,
 				conv_cfg=conv_cfg,
 				norm_cfg=norm_cfg,
-				drop_path_ratio = drop_path_ratio[0]
+				drop_path_ratio = drop_path_ratio[0],
 				**kwargs))
 		inplanes = planes * block.expansion
 		for i in range(1, num_blocks):
