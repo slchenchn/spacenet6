@@ -1,3 +1,10 @@
+'''
+Author: Shuailin Chen
+Created Date: 2021-09-25
+Last Modified: 2021-10-22
+	content: 
+'''
+
 # Copyright (c) OpenMMLab. All rights reserved.
 from .cgnet import CGNet
 from .fast_scnn import FastSCNN
@@ -12,8 +19,11 @@ from .swin import SwinTransformer
 from .unet import UNet
 from .vit import VisionTransformer
 
-__all__ = [
-    'ResNet', 'ResNetV1c', 'ResNetV1d', 'ResNeXt', 'HRNet', 'FastSCNN',
-    'ResNeSt', 'MobileNetV2', 'UNet', 'CGNet', 'MobileNetV3',
-    'VisionTransformer', 'SwinTransformer', 'MixVisionTransformer'
-]
+from resnet_stochastic_depth import ResNetDropPath, ResNetDropPathV1c
+
+
+# __all__ = [
+#     'ResNet', 'ResNetV1c', 'ResNetV1d', 'ResNeXt', 'HRNet', 'FastSCNN',
+#     'ResNeSt', 'MobileNetV2', 'UNet', 'CGNet', 'MobileNetV3',
+#     'VisionTransformer', 'SwinTransformer', 'MixVisionTransformer'
+# ]
