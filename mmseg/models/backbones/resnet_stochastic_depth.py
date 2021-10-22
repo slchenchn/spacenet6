@@ -199,6 +199,15 @@ class BottleneckDropPath(Bottleneck):
 @BACKBONES.register_module()
 class ResNetDropPath(ResNet):
 	''' ResNet with drop path (stochastic depth) '''
+
+	arch_settings = {
+		18: (BasicBlockDropPath, (2, 2, 2, 2)),
+		34: (BasicBlockDropPath, (3, 4, 6, 3)),
+		50: (BottleneckDropPath, (3, 4, 6, 3)),
+		101: (BottleneckDropPath, (3, 4, 23, 3)),
+		152: (BottleneckDropPath, (3, 8, 36, 3))
+	}
+
 	def __init__(self,
 				depth,
 				in_channels=3,
@@ -226,7 +235,7 @@ class ResNetDropPath(ResNet):
 				init_cfg=None,
 				drop_path_rate=0.3,
 				):
-		super().__init__(init_cfg)
+		super(ResNet, self).__init__(init_cfg)
 		if depth not in self.arch_settings:
 			raise KeyError(f'invalid depth {depth} for resnet')
 
