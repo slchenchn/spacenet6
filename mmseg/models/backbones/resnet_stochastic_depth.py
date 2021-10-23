@@ -91,7 +91,7 @@ class ResLayerDropPath(Sequential):
 					dilation=dilation if multi_grid is None else multi_grid[i],
 					conv_cfg=conv_cfg,
 					norm_cfg=norm_cfg,
-					drop_path_ratio = drop_path_ratio[i]
+					drop_path_ratio = drop_path_ratio[i],
 					**kwargs))
 		super().__init__(*layers)
 
