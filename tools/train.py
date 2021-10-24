@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-25
-Last Modified: 2021-09-25
+Last Modified: 2021-10-24
 	content: 
 '''
 # Copyright (c) OpenMMLab. All rights reserved.
@@ -11,6 +11,8 @@ import os
 import os.path as osp
 import time
 import warnings
+import mylib
+from mylib.utils import wait_for_gpu
 
 import mmcv
 import torch
@@ -62,6 +64,10 @@ def parse_args():
         default='none',
         help='job launcher')
     parser.add_argument('--local_rank', type=int, default=0)
+    
+    parser.add_argument('--required', type=float, default=None)
+    parser.add_argument('--interval', type=float, default=10)
+    
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
@@ -71,6 +77,7 @@ def parse_args():
 
 def main():
     args = parse_args()
+    wait_for_gpu(args.required, args.interval)
 
     cfg = Config.fromfile(args.config)
     if args.options is not None:
