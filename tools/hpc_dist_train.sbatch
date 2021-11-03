@@ -16,15 +16,16 @@ GPUS=$2
 PORT=${PORT:-29500}
 
 cd $SLURM_SUBMIT_DIR
-echo "SLURM_SUBMIT_DIR: $SLURM_SUBMIT_DIR ---- $0"
+echo "SLURM_SUBMIT_DIR: $SLURM_SUBMIT_DIR"
+echo "pwd: $pwd"
 # source $(dirname "$0")/env.sh
 source activate sn6
-PYTHONPATH="$(dirname $0)/..":$PYTHONPATH \
+PYTHONPATH="$(dirname $SLURM_SUBMIT_DIR)/..":$PYTHONPATH \
 echo "python -m torch.distributed.launch --nproc_per_node=2 \
     --master_port=$PORT \
-    $(dirname "$0")/train.py $CONFIG --launcher pytorch --options data.samples_per_gpu=8 data.workers_per_gpu=8 ${@:3}"
+    tools/train.py $CONFIG --launcher pytorch --options data.samples_per_gpu=8 data.workers_per_gpu=8 ${@:3}"
 python -m torch.distributed.launch --nproc_per_node=2 --master_port=$PORT \
-    $(dirname "$0")/train.py \
+    tools/train.py \
     configs/deeplabv3/deeplabv3_r50-d8-selfsup_512x512_20k_sn6_sar_pro_rotated_ft.py \
     --launcher pytorch \
     --options data.samples_per_gpu=8 \
