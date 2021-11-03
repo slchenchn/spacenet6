@@ -16,11 +16,12 @@ GPUS=$2
 PORT=${PORT:-29500}
 
 cd $SLURM_SUBMIT_DIR
-echo "SLURM_SUBMIT_DIR: $SLURM_SUBMIT_DIR"
+echo "SLURM_SUBMIT_DIR: $SLURM_SUBMIT_DIR ---- $0"
 # source $(dirname "$0")/env.sh
 source activate sn6
 PYTHONPATH="$(dirname $0)/..":$PYTHONPATH \
-echo "python -m torch.distributed.launch --nproc_per_node=$GPUS --master_port=$PORT \
+echo "python -m torch.distributed.launch --nproc_per_node=2 \
+    --master_port=$PORT \
     $(dirname "$0")/train.py $CONFIG --launcher pytorch --options data.samples_per_gpu=8 data.workers_per_gpu=8 ${@:3}"
 python -m torch.distributed.launch --nproc_per_node=2 --master_port=$PORT \
     $(dirname "$0")/train.py \
