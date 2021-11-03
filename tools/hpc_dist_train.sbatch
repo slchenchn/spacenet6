@@ -16,6 +16,7 @@ GPUS=$2
 PORT=${PORT:-29500}
 
 cd $SLURM_SUBMIT_DIR
+echo "SLURM_SUBMIT_DIR: $SLURM_SUBMIT_DIR"
 # source $(dirname "$0")/env.sh
 source activate sn6
 PYTHONPATH="$(dirname $0)/..":$PYTHONPATH \
