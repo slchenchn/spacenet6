@@ -1,13 +1,13 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-14
-Last Modified: 2021-10-08
+Last Modified: 2021-11-04
 	content: with orientation infos
 '''
 
 # dataset settings
 dataset_type = 'SN6SARProDataset'
-data_root = '/data/csl'
+data_root = 'data'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=False)
 crop_size = (512, 512)
