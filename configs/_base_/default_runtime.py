@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-14
-Last Modified: 2021-09-25
+Last Modified: 2021-11-15
 	content: 
 '''
 # yapf:disable
@@ -16,5 +16,9 @@ dist_params = dict(backend='nccl')
 log_level = 'INFO'
 load_from = None
 resume_from = None
-workflow = [('train', 1)]
+# workflow = [('train', 1)]
+
+# number after 'train' mean iters; while numbers after 'val' means epochs
+workflow = [('train', 50), ('val', 1)]
+# workflow = [('val', 1), ('train', 1)]
 cudnn_benchmark = True

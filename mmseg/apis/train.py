@@ -1,3 +1,9 @@
+'''
+Author: Shuailin Chen
+Created Date: 2021-09-14
+Last Modified: 2021-11-15
+	content: 
+'''
 # Copyright (c) OpenMMLab. All rights reserved.
 import random
 import warnings
@@ -6,6 +12,7 @@ import numpy as np
 import torch
 from mmcv.parallel import MMDataParallel, MMDistributedDataParallel
 from mmcv.runner import build_optimizer, build_runner
+from mmseg.runner import MyIterBasedRunner
 
 from mmseg.core import DistEvalHook, EvalHook
 from mmseg.datasets import build_dataloader, build_dataset
@@ -43,17 +50,38 @@ def train_segmentor(model,
 
     # prepare data loaders
     dataset = dataset if isinstance(dataset, (list, tuple)) else [dataset]
-    data_loaders = [
-        build_dataloader(
-            ds,
-            cfg.data.samples_per_gpu,
-            cfg.data.workers_per_gpu,
-            # cfg.gpus will be ignored if distributed
-            len(cfg.gpu_ids),
-            dist=distributed,
-            seed=cfg.seed,
-            drop_last=True) for ds in dataset
-    ]
+    data_loaders = []
+    for wf, ds in zip(cfg.workflow, dataset):
+        if 'val' in wf:
+            ''' double batchsize for val dataloader '''
+            batchsize = cfg.data.samples_per_gpu * 2
+            # the tensor dim will reduce if the last batch only has one sample, so here always set drop_last to true
+            # drop_last = False
+        else:
+            batchsize = cfg.data.samples_per_gpu
+            # drop_last = True
+
+        data_loaders.append(build_dataloader(
+        ds,
+        batchsize,
+        cfg.data.workers_per_gpu,
+        # cfg.gpus will be ignored if distributed
+        len(cfg.gpu_ids),
+        dist=distributed,
+        seed=cfg.seed,
+        drop_last=True))
+
+    # data_loaders = [
+    #     build_dataloader(
+    #         ds,
+    #         cfg.data.samples_per_gpu,
+    #         cfg.data.workers_per_gpu,
+    #         # cfg.gpus will be ignored if distributed
+    #         len(cfg.gpu_ids),
+    #         dist=distributed,
+    #         seed=cfg.seed,
+    #         drop_last=True) for ds in dataset
+    # ]
 
     # put model on gpus
     if distributed:
