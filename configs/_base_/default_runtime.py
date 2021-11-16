@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-14
-Last Modified: 2021-11-15
+Last Modified: 2021-11-16
 	content: 
 '''
 # yapf:disable
@@ -19,6 +19,6 @@ resume_from = None
 # workflow = [('train', 1)]
 
 # number after 'train' mean iters; while numbers after 'val' means epochs
-workflow = [('train', 50), ('val', 1)]
+workflow = [('train', 500), ('val', 1)]
 # workflow = [('val', 1), ('train', 1)]
 cudnn_benchmark = True
