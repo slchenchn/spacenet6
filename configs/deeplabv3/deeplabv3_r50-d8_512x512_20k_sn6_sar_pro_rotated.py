@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-14
-Last Modified: 2021-10-16
+Last Modified: 2021-11-23
 	content: 
 '''
 _base_ = [
@@ -12,3 +12,7 @@ _base_ = [
 ]
 model = dict(
     decode_head=dict(num_classes=2), auxiliary_head=dict(num_classes=2))
+
+
+# workflow = [('train', 1)]
+# evaluation = dict(interval=4000, metric='mIoU', pre_eval=True)
