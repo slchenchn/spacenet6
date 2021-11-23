@@ -1,4 +1,15 @@
+'''
+Author: Shuailin Chen
+Created Date: 2021-09-14
+Last Modified: 2021-11-22
+	content: 
+'''
 # Copyright (c) OpenMMLab. All rights reserved.
+
+# report the inference time as the total time of network forwarding and post-processing, excluding the data loading time. 
+# This script computes the average time on 200 images with torch.backends.cudnn.benchmark=False.
+
+
 import argparse
 import time
 
