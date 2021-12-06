@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-25
-Last Modified: 2021-10-23
+Last Modified: 2021-12-06
 	content: 
 '''
 
@@ -19,6 +19,7 @@ from .swin import SwinTransformer
 from .unet import UNet
 from .vit import VisionTransformer
 
+from .timm_backbone import TIMMBackbone
 from .resnet_stochastic_depth import ResNetDropPath, ResNetDropPathV1c
 
 
