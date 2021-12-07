@@ -1,3 +1,9 @@
+'''
+Author: Shuailin Chen
+Created Date: 2021-09-25
+Last Modified: 2021-12-07
+	content: 
+'''
 # Copyright (c) OpenMMLab. All rights reserved.
 import torch
 import torch.nn as nn

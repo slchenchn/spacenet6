@@ -7,7 +7,7 @@
 #SBATCH --partition=gpu
 
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:4
+#SBATCH --gres=gpu:2
 #SBATCH --cpus-per-task=16
 
 CONFIG=$1
@@ -25,12 +25,12 @@ echo "python -m torch.distributed.launch --nproc_per_node=2 \
     --master_port=$PORT \
     tools/train.py $CONFIG --launcher pytorch --options data.samples_per_gpu=8 data.workers_per_gpu=8 ${@:3}"
 
-python -m torch.distributed.launch --nproc_per_node=4 --master_port=$PORT \
+python -m torch.distributed.launch --nproc_per_node=2 --master_port=$PORT \
     tools/train.py \
-    configs/vit/upernet_vit-b16_mln_512x512_40k_sn6_sar_pro_rotated.py \
+    configs/vit/upernet_deit-s16_512x512_40k_sn6_sar_pro_rotated.py \
     --launcher pytorch \
-    --options data.samples_per_gpu=4 data.workers_per_gpu=4 \
-    model.pretrained=pretrain/checkpoint-879.pth \
+    --options data.samples_per_gpu=8 data.workers_per_gpu=8 \
     ${@:3}
+    # model.pretrained=pretrain/checkpoint-879.pth \
     # data.workers_per_gpu=8 \
     # model.pretrained=/home/chenshuailin/project/code/PolSAR_SelfSup/work_dirs/pbyol_r50-d8_sn6_sar_pro_ul_fh_v2_ep1600_lars_lr02_bs256/20211029_112637/mmseg_epoch_1600.pth \

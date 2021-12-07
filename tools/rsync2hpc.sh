@@ -5,6 +5,6 @@ rsync -avz --exclude data \
     --exclude tmp \
     --exclude mmsegmentation.egg-info \
     --exclude .git \
-    --exclude __pychche__ \
+    --exclude __pycache__ \
     ~/code/spacenet6 \
     sftp_whuhpc:/home/chenshuailin/code/
