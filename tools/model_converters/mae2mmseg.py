@@ -37,15 +37,17 @@ def convert_vit_mae(ckpt):
     new_ckpt = OrderedDict()
     for k, v in middle.items():
         if 'q_bias' in k:
-            new_k = k.replace('q_bias', 'in_proj_bias')
+            new_k = k.replace('q_bias', 'attn.in_proj_bias')
             new_v = torch.cat((middle[k], torch.zeros_like(middle[k], requires_grad=False), middle[k.replace('q_bias', 'v_bias')]))
+        elif 'v_bias' in k:
+            continue
         else:
             new_k = k
             new_v = v
 
         new_ckpt.update({new_k: new_v})
     
-    return new_v
+    return new_ckpt
 
 
 def main():
