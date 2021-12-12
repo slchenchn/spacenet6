@@ -29,7 +29,6 @@ python -m torch.distributed.launch --nproc_per_node=4 --master_port=$PORT \
     tools/train.py \
     configs/vit/upernet_vit-b16_mln_512x512_40k_sn6_sar_pro_rotated.py \
     --launcher pytorch \
-    model.pretrained=pretrain/checkpoint-879_mmseg.pth \
     --options \
     data.samples_per_gpu=4 \
     data.workers_per_gpu=4 \

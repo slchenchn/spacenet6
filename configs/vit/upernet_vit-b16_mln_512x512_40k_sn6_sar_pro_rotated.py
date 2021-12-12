@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-12-06
-Last Modified: 2021-12-06
+Last Modified: 2021-12-10
 	content: 
 '''
 _base_ = [
@@ -12,7 +12,8 @@ _base_ = [
 ]
 
 model = dict(
-    pretrained='pretrain/vit_base_patch16_224.pth',
+    # pretrained='pretrain/vit_base_patch16_224.pth',
+    pretrained=None,
     decode_head=dict(num_classes=2),
     auxiliary_head=dict(num_classes=2))
 
