@@ -7,8 +7,8 @@
 #SBATCH --partition=gpu
 
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=16
+#SBATCH --gres=gpu:2
+#SBATCH --cpus-per-task=8
 
 CONFIG=$1
 GPUS=$2
@@ -25,13 +25,14 @@ echo "python -m torch.distributed.launch --nproc_per_node=2 \
     --master_port=$PORT \
     tools/train.py $CONFIG --launcher pytorch --options data.samples_per_gpu=8 data.workers_per_gpu=8 ${@:3}"
 
-python -m torch.distributed.launch --nproc_per_node=4 --master_port=$PORT \
+python -m torch.distributed.launch --nproc_per_node=2 --master_port=$PORT \
     tools/train.py \
-    configs/vit/upernet_vit-b16_mln_512x512_40k_sn6_sar_pro_rotated.py \
+    configs/deeplabv3/deeplabv3_r50-d8-selfsup_512x512_20k_sn6_sar_pro_rotated_ft.py \
     --launcher pytorch \
     --options \
-    data.samples_per_gpu=4 \
+    data.samples_per_gpu=8 \
     data.workers_per_gpu=4 \
+    model.pretrained=/home/chenshuailin/project/code/polsar_selfsup2/work_dirs/selfsup/densecl_resnet50_4xb64-coslr-200e_train_cut/20211228_112400/latest.pth \
     ${@:3}
     # model.pretrained=pretrain/checkpoint-879.pth \
     # data.workers_per_gpu=8 \
