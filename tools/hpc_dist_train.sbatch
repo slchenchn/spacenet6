@@ -23,11 +23,11 @@ PYTHONPATH="$(dirname $SLURM_SUBMIT_DIR)/..":$PYTHONPATH \
 
 echo "python -m torch.distributed.launch --nproc_per_node=2 \
     --master_port=$PORT \
-    tools/train.py $CONFIG --launcher pytorch --options data.samples_per_gpu=8 data.workers_per_gpu=8 ${@:3}"
+    tools/train.py $CONFIG --launcher pytorch --options data.samples_per_gpu=8 data.workers_per_gpu=4 ${@:3}"
 
 python -m torch.distributed.launch --nproc_per_node=2 --master_port=$PORT \
     tools/train.py \
-    configs/deeplabv3/deeplabv3_r50-d8-selfsup_512x512_20k_sn6_sar_pro_rotated_ft.py \
+    configs/deeplabv3/deeplabv3_r50-d8-selfsup_512x512_10k_sn6_sar_pro_rotated_ft.py \
     --launcher pytorch \
     --options \
     data.samples_per_gpu=8 \
