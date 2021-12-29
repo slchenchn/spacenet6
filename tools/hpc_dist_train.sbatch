@@ -32,7 +32,7 @@ python -m torch.distributed.launch --nproc_per_node=2 --master_port=$PORT \
     --options \
     data.samples_per_gpu=8 \
     data.workers_per_gpu=4 \
-    model.pretrained=/home/chenshuailin/project/code/polsar_selfsup2/work_dirs/selfsup/densecl_resnet50_4xb64-coslr-200e_train_cut/20211228_112400/latest.pth \
+    model.pretrained=/home/chenshuailin/project/code/polsar_selfsup2/work_dirs/selfsup/simsiam_resnet50_1xb64x4-coslr-200e_train_cut/20211228_191148/mmseg_epoch_200.pth \
     ${@:3}
     # model.pretrained=pretrain/checkpoint-879.pth \
     # data.workers_per_gpu=8 \
