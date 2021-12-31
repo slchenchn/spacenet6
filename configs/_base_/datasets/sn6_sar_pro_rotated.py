@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-14
-Last Modified: 2021-11-04
+Last Modified: 2021-12-28
 	content: rotated version according to the official paper
 '''
 
@@ -42,7 +42,7 @@ test_pipeline = [
 ]
 data = dict(
     samples_per_gpu=16,
-    workers_per_gpu=12,
+    workers_per_gpu=8,
     train=dict(
         type=dataset_type,
         data_root=data_root,

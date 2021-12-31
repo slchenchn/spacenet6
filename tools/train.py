@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-25
-Last Modified: 2021-10-24
+Last Modified: 2021-12-29
 	content: 
 '''
 # Copyright (c) OpenMMLab. All rights reserved.
@@ -66,7 +66,7 @@ def parse_args():
     parser.add_argument('--local_rank', type=int, default=0)
     
     parser.add_argument('--required', type=float, default=None)
-    parser.add_argument('--interval', type=float, default=10)
+    parser.add_argument('--interval', type=float, default=1)
     
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:

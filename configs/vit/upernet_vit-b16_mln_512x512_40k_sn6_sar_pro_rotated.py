@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-12-06
-Last Modified: 2021-12-06
+Last Modified: 2021-12-31
 	content: 
 '''
 _base_ = [
@@ -12,7 +12,8 @@ _base_ = [
 ]
 
 model = dict(
-    pretrained='pretrain/vit_base_patch16_224.pth',
+    # pretrained='pretrain/vit_base_patch16_224.pth',
+    pretrained=None,
     decode_head=dict(num_classes=2),
     auxiliary_head=dict(num_classes=2))
 
@@ -42,4 +43,4 @@ lr_config = dict(
     by_epoch=False)
 
 # By default, models are trained on 8 GPUs with 2 images per GPU
-data = dict(samples_per_gpu=4)
+data = dict(samples_per_gpu=16)
