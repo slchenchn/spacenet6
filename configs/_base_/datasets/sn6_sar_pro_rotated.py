@@ -1,7 +1,7 @@
 '''
 Author: Shuailin Chen
 Created Date: 2021-09-14
-Last Modified: 2021-12-28
+Last Modified: 2022-02-08
 	content: rotated version according to the official paper
 '''
 
@@ -9,7 +9,9 @@ Last Modified: 2021-12-28
 dataset_type = 'SN6SARProDataset'
 data_root = 'data'
 img_norm_cfg = dict(
-    mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=False)
+    mean=[123.675, 116.28, 103.53],
+    std=[58.395, 57.12, 57.375],
+    to_rgb=False)
 crop_size = (512, 512)
 img_scale = (900, 900)
 train_pipeline = [
