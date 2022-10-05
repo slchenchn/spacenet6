@@ -33,6 +33,7 @@ from .setr_up_head import SETRUPHead
 from .uper_head import UPerHead
 
 from .cls_head import ClassificationHead
+from .dbes import FCNDBES
 
 # __all__ = [
 #     'FCNHead', 'PSPHead', 'ASPPHead', 'PSAHead', 'NLHead', 'GCHead', 'CCHead',

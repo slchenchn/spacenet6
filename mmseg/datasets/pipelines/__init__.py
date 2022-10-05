@@ -18,6 +18,7 @@ from .visualize import Visualize
 from .loading_misc import LoadSN6Orientation
 from .sn6_transforms import FlipAccodingToOrien
 
+from .dbes_transforms import RelaxedBoundaryLossToTensor
 # __all__ = [
 #     'Compose', 'to_tensor', 'ToTensor', 'ImageToTensor', 'ToDataContainer',
 #     'Transpose', 'Collect', 'LoadAnnotations', 'LoadImageFromFile',

@@ -2,7 +2,7 @@
 import torch.nn as nn
 
 
-def accuracy(pred, target, topk=1, thresh=None):
+def accuracy(pred, target, topk=1, thresh=None, **kargs):
     """Calculate accuracy according to the prediction and target.
 
     Args:
